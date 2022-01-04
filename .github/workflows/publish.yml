@@ -24,7 +24,7 @@ jobs:
       - name: Display structure of downloaded Assembled and Assembled-Windows folders
         run: ls -R
 
-      - name: Build ELF ${{ steps.regex-match.outputs.group1 }}.${{ steps.regex-match.outputs.group2 }}
+      - name: Build ELF ${{ steps.regex-match.outputs.match }}
         run: gcc main.cpp -o main.out
 
   package:
