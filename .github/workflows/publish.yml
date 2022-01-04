@@ -1,8 +1,7 @@
-name: GARegex main branch update
-
+name: Publish Package
 on:
-  repository_dispatch:
-    types: [GARegex-main-update]
+  release:
+    types: [published]
 
 jobs:
   build-main:
