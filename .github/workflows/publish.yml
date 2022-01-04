@@ -5,9 +5,8 @@ on:
     types: [GARegex-main-update]
 
 jobs:
-  - job: REGEX build
-    pool:
-      vmImage: ubuntu-latest
+  build-main:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2.3.3
@@ -23,3 +22,13 @@ jobs:
       - script: |
           ln -s version.h versions/0.64/version.h
         displayName: 'Make symlink'
+
+  package:
+    needs: [build-main]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2.3.3
+
+      - name: Display structure of downloaded Assembled and Assembled-Windows folders
+        run: ls -R
