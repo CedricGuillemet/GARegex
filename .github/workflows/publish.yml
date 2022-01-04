@@ -19,9 +19,8 @@ jobs:
           text: ${GITHUB_REF/refs\/tags\//}
           regex: '^(\d+\.)?(\d+\.)?(\*|\d+)$'
 
-      - script: |
-          ln -s version.h versions/0.64/version.h
-        displayName: 'Make symlink'
+      - name: Make symlink
+        run: ln -s version.h versions/0.64/version.h
 
   package:
     needs: [build-main]
