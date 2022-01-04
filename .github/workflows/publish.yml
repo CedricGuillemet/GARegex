@@ -30,3 +30,9 @@ jobs:
 
       - name: Display structure of downloaded Assembled and Assembled-Windows folders
         run: ls -R
+
+      - name: Build ELF
+        run: gcc main.cpp -o main.out
+
+      - name: Run ELF
+        run: ./main.out
