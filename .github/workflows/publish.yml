@@ -19,7 +19,7 @@ jobs:
           regex: '^(\d+\.)?(\d+\.)?(\*|\d+)$'
 
       - name: Make symlink
-        run: ln -s version.h versions/0.64/version.h
+        run: ln -s versions/0.64/version.h version.h 
 
   package:
     needs: [build-main]
