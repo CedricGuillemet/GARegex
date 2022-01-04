@@ -1,0 +1,25 @@
+name: GARegex master branch update
+
+on:
+  repository_dispatch:
+    types: [GARegex-master-update]
+
+jobs:
+  build-ubuntu:
+    name: Build 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2.3.3
+        with:
+          submodules: 'recursive'
+
+      - uses: actions-ecosystem/action-regex-match@v2
+        id: regex-match
+        with:
+          text: ${GITHUB_REF/refs\/tags\//}
+          regex: '^(\d+\.)?(\d+\.)?(\*|\d+)$'
+
+      - script: |
+        ln -s version.h versions/${{ steps.regex-match.outputs.group1 }}.${{ steps.regex-match.outputs.group2 }}/version.h
+      displayName: 'Make symlink'

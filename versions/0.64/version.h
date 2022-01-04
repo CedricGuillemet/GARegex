@@ -1,0 +1,1 @@
+const char* szVersion = "0.64";
