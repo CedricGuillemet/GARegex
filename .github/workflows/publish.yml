@@ -16,16 +16,19 @@ jobs:
         id: regex-match
         with:
           text: ${GITHUB_REF/refs\/tags\//}
-          regex: '^(\d+\.)?(\d+\.)?(\*|\d+)$'
+          regex: '^(\d+\.)?(\d+)'
 
       - name: Make symlink
-        run: ln -s versions/0.64/version.h version.h 
+        run: ln -s versions/${{ steps.regex-match.outputs.match }}/version.h version.h 
 
       - name: Display structure of downloaded Assembled and Assembled-Windows folders
         run: ls -R
 
-      - name: Build ELF ${{ steps.regex-match.outputs.match }}
+      - name: Build ELF 
         run: gcc main.cpp -o main.out
+
+      - name: Run ELF
+        run: ./main.out
 
   package:
     needs: [build-main]
@@ -34,5 +37,3 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2.3.3
 
-      - name: Run ELF
-        run: ./main.out
