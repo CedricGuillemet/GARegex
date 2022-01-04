@@ -23,8 +23,9 @@ jobs:
           echo "-name ${{ github.event.inputs.name }}"
           echo "- in ${{ github.event.inputs.home }}"
           echo "- ref ${GITHUB_REF/refs\/tags\//}"
+          echo "Name: ${{ github.event.release.name }} Description: ${{ github.event.release.body }}"
 
-      - name: Make symlink ${GITHUB_REF/refs\/tags\//} 
+      - name: Make symlink
         run: ln -s versions/${{ steps.regex-match.outputs.match }}/version.h version.h 
 
       - name: Display structure of downloaded Assembled and Assembled-Windows folders
