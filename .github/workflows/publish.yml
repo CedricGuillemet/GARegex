@@ -1,8 +1,8 @@
-name: GARegex master branch update
+name: GARegex main branch update
 
 on:
   repository_dispatch:
-    types: [GARegex-master-update]
+    types: [GARegex-main-update]
 
 jobs:
   build-ubuntu:
