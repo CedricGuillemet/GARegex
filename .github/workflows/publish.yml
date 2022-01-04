@@ -15,10 +15,16 @@ jobs:
       - uses: actions-ecosystem/action-regex-match@v2
         id: regex-match
         with:
-          text: ${GITHUB_REF/refs\/tags\//}
+          text: ${{ github.event.inputs.name }}
           regex: '^(\d+\.)?(\d+)'
 
-      - name: Make symlink
+      - name: Debug infos
+        run: |
+          echo "-name ${{ github.event.inputs.name }}"
+          echo "- in ${{ github.event.inputs.home }}"
+          echo "- ref ${GITHUB_REF/refs\/tags\//}"
+
+      - name: Make symlink ${GITHUB_REF/refs\/tags\//} 
         run: ln -s versions/${{ steps.regex-match.outputs.match }}/version.h version.h 
 
       - name: Display structure of downloaded Assembled and Assembled-Windows folders
