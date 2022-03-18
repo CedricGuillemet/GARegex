@@ -1,10 +1,12 @@
 name: 'build'
 description: 'test build with composite'
-inputs:
-  react-native-version:
-    description: 'react native version'
-    required: true
-    default: '0.64'
+on:
+  workflow_call:
+    inputs:
+      react-native-version:
+        description: 'react native version'
+        required: true
+        default: '0.64'
 runs:
   using: 'composite'
   steps:
