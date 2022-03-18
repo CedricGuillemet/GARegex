@@ -7,9 +7,13 @@ jobs:
 
   build-main064:
     uses: CedricGuillemet/GARegex/.github/workflows/action_build.yml@main
+    with:
+      react-native-version: 0.64
 
   build-main065:
     uses: CedricGuillemet/GARegex/.github/workflows/action_build.yml@main
+    with:
+      react-native-version: 0.65
 
   package:
     needs: [build-main064, build-main065]
