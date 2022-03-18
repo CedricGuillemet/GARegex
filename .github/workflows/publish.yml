@@ -7,13 +7,13 @@ jobs:
 
   build-main064:
     runs-on: ubuntu-latest
-    uses: CedricGuillemet/GARegex/.github/workflows/action_build.yml@master
+    uses: CedricGuillemet/GARegex/.github/workflows/action_build.yml@main
     with:
       react-native-version: '0.64'
 
   build-main065:
     runs-on: ubuntu-latest
-    uses: CedricGuillemet/GARegex/.github/workflows/action_build.yml@master
+    uses: CedricGuillemet/GARegex/.github/workflows/action_build.yml@main
     with:
       react-native-version: '0.65'
 
