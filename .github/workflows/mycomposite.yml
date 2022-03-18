@@ -1,0 +1,13 @@
+name: 'build'
+description: 'test build with composite'
+inputs:
+  react-native-version:
+    description: 'react native version'
+    required: true
+    default: '0.64'
+runs:
+  using: 'composite'
+  runs-on: ubuntu-latest
+  steps:
+    - run: echo using react native ${{ react-native-version }}.
+    shell: bash

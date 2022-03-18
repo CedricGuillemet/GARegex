@@ -4,42 +4,28 @@ on:
     types: [published]
 
 jobs:
-  build-main:
+  build-main064:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v2.3.3
+      - uses: actions/checkout@v2
+      - id: build064
+        uses: actions/mycomposite@v1
         with:
-          submodules: 'recursive'
+          react-native-version: '0.64'
 
-      - uses: actions-ecosystem/action-regex-match@v2
-        id: regex-match
+  build-main065:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - id: build065
+        uses: actions/mycomposite@v1
         with:
-          text: ${{ github.event.release.name }}
-          regex: '^(\d+\.)?(\d+)'
-
-      - name: Debug infos
-        run: |
-          echo "- Tag ${GITHUB_REF/refs\/tags\//}"
-          echo "- Name: ${{ github.event.release.name }}"
-          echo "- Description: ${{ github.event.release.body }}"
-
-      - name: Make symlink
-        run: ln -s versions/${{ steps.regex-match.outputs.match }}/version.h version.h 
-
-      - name: Display structure of downloaded Assembled and Assembled-Windows folders
-        run: ls -R
-
-      - name: Build ELF 
-        run: gcc main.cpp -o main.out
-
-      - name: Run ELF
-        run: ./main.out
+          react-native-version: '0.65'
 
   package:
-    needs: [build-main]
+    needs: [build-main064, build-main065]
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v2.3.3
+      - run: everything done.
+        shell: bash
 
