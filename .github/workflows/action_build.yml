@@ -5,6 +5,7 @@ on:
     inputs:
       react-native-version:
         required: true
+        type: string
 #jobs:
 #  Buildit:
 #    runs-on: ubuntu-latest
@@ -16,5 +17,5 @@ jobs:
   Buildit:
     runs-on: ubuntu-latest
     steps:
-      - run: echo using react native ${{ input.react-native-version }}
+      - run: echo using react native ${{ inputs.react-native-version }}
         shell: bash
