@@ -20,5 +20,5 @@ jobs:
   Buildit:
     runs-on: ubuntu-latest
     steps:
-      - run: echo using react native ${{ react-native-version }}.
+      - run: echo using react native
         shell: bash
