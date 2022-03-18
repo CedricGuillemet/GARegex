@@ -1,12 +1,12 @@
 name: 'build'
 
-#on:
-#  workflow_call:
-#    inputs:
-#      react-native-version:
-#        description: 'react native version'
-#        required: true
-#        default: '0.64'
+on:
+  workflow_call:
+    inputs:
+      react-native-version:
+        description: 'react native version'
+        required: true
+        default: '0.64'
 #jobs:
 #  Buildit:
 #    runs-on: ubuntu-latest
@@ -14,11 +14,9 @@ name: 'build'
 #      - run: echo using react native ${{ react-native-version }}.
 #        shell: bash
 
-on: [workflow_call]
-
 jobs:
   Buildit:
     runs-on: ubuntu-latest
     steps:
-      - run: echo using react native
+      - run: echo using react native ${{ react-native-version }}
         shell: bash
