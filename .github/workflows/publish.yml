@@ -1,34 +1,30 @@
 name: Publish Package
 on:
   release:
-    types: [published]
-
-#jobs:
-#
-#  build-main064:
-#    runs-on: ubuntu-latest
-#    uses: CedricGuillemet/GARegex/.github/workflows/action_build.yml@main
-#    with:
-#      react-native-version: '0.64'
-#
-#  build-main065:
-#    runs-on: ubuntu-latest
-#    uses: CedricGuillemet/GARegex/.github/workflows/action_build.yml@main
-#    with:
-#      react-native-version: '0.65'
-#
-#  package:
-#    needs: [build-main064, build-main065]
-#    runs-on: ubuntu-latest
-#    steps:
-#      - run: everything done.
-#        shell: bash
+    types: [push]
 
 jobs:
- build:
-   runs-on: windows-latest
-   steps:
-   - uses: actions/checkout@v2
-   - uses: CedricGuillemet/GARegex/.github/workflows/action_build.yml@main
-     with: 
-       name: OctoCat
+
+  build-main064:
+    runs-on: ubuntu-latest
+    uses: CedricGuillemet/GARegex/.github/workflows/action_build.yml@main
+
+  build-main065:
+    runs-on: ubuntu-latest
+    uses: CedricGuillemet/GARegex/.github/workflows/action_build.yml@main
+
+  package:
+    needs: [build-main064, build-main065]
+    runs-on: ubuntu-latest
+    steps:
+      - run: everything done.
+        shell: bash
+
+#jobs:
+# build:
+#   runs-on: windows-latest
+#   steps:
+#   - uses: actions/checkout@v2
+#   - uses: CedricGuillemet/GARegex/.github/workflows/action_build.yml@main
+#     with: 
+#       name: OctoCat
