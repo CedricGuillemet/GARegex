@@ -7,18 +7,14 @@ jobs:
   build-main064:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - id: build064
-        uses: actions/mycomposite@v1
+      - uses: CedricGuillemet/GARegex/.github/workflows/buildiosandroid@master
         with:
           react-native-version: '0.64'
 
   build-main065:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - id: build065
-        uses: actions/mycomposite@v1
+      - uses: CedricGuillemet/GARegex/.github/workflows/buildiosandroid@master
         with:
           react-native-version: '0.65'
 
