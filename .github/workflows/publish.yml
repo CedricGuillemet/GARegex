@@ -8,14 +8,14 @@ jobs:
   build-main064:
     runs-on: ubuntu-latest
     uses: CedricGuillemet/GARegex/.github/workflows/buildiosandroid/action.yml@master
-      with:
-        react-native-version: '0.64'
+    with:
+      react-native-version: '0.64'
 
   build-main065:
     runs-on: ubuntu-latest
     uses: CedricGuillemet/GARegex/.github/workflows/buildiosandroid/action.yml@master
-      with:
-        react-native-version: '0.65'
+    with:
+      react-native-version: '0.65'
 
   package:
     needs: [build-main064, build-main065]
