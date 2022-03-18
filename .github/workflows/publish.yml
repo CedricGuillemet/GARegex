@@ -4,19 +4,18 @@ on:
     types: [published]
 
 jobs:
+
   build-main064:
     runs-on: ubuntu-latest
-    steps:
-      - uses: CedricGuillemet/GARegex/.github/workflows/buildiosandroid@master
-        with:
-          react-native-version: '0.64'
+    uses: CedricGuillemet/GARegex/.github/workflows/buildiosandroid/action.yml@master
+      with:
+        react-native-version: '0.64'
 
   build-main065:
     runs-on: ubuntu-latest
-    steps:
-      - uses: CedricGuillemet/GARegex/.github/workflows/buildiosandroid@master
-        with:
-          react-native-version: '0.65'
+    uses: CedricGuillemet/GARegex/.github/workflows/buildiosandroid/action.yml@master
+      with:
+        react-native-version: '0.65'
 
   package:
     needs: [build-main064, build-main065]
