@@ -1,15 +1,27 @@
-name: 'build'
-description: 'test build with composite'
-on:
-  workflow_call:
-    inputs:
-      react-native-version:
-        description: 'react native version'
-        required: true
-        default: '0.64'
-jobs:
-  Buildit:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo using react native ${{ react-native-version }}.
-        shell: bash
+#name: 'build'
+#description: 'test build with composite'
+#on:
+#  workflow_call:
+#    inputs:
+#      react-native-version:
+#        description: 'react native version'
+#        required: true
+#        default: '0.64'
+#jobs:
+#  Buildit:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - run: echo using react native ${{ react-native-version }}.
+#        shell: bash
+
+inputs:
+ name: 
+   description: 'Your name'
+   default: 'No name provided'
+runs:
+ using: "composite"
+ steps: 
+   - run: echo Hello ${{ inputs.name }}.
+     shell: bash
+   - run: echo "Nice to meet you!"
+     shell: pwsh
