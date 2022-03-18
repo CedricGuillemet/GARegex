@@ -6,11 +6,9 @@ on:
 jobs:
 
   build-main064:
-    runs-on: ubuntu-latest
     uses: CedricGuillemet/GARegex/.github/workflows/action_build.yml@main
 
   build-main065:
-    runs-on: ubuntu-latest
     uses: CedricGuillemet/GARegex/.github/workflows/action_build.yml@main
 
   package:
