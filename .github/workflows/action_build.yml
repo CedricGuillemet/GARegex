@@ -14,7 +14,6 @@ name: 'build'
 #      - run: echo using react native ${{ react-native-version }}.
 #        shell: bash
 
-name: CD
 on: [workflow_call]
 
 jobs:
