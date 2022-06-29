@@ -17,11 +17,11 @@ jobs:
       - name: make folder
         run: |
              cp ./main ./Package
-#      - name: Upload Assembled
-#        uses: actions/upload-artifact@v2
-#        with:
-#          name: 'Assembled'
-#          path: Package
+      - name: Upload Assembled
+        uses: actions/upload-artifact@v2
+        with:
+          name: 'Assembled'
+          path: Package
 #      - uses: actions/download-artifact@v3
 #        with:
 #          name: Assembled
@@ -32,18 +32,28 @@ jobs:
         working-directory: ./
         
         
-      - name: Versionning
-        run: npm version --no-git-tag-version 2.0.0
-        working-directory: ./Package
+#      - name: Versionning
+#        run: npm version --no-git-tag-version 2.0.0
+#        working-directory: ./Package
         
-      - name: Pack it
-        run: npm pack
-        working-directory: ./Package
+#      - name: Pack it
+#        run: npm pack
+#        working-directory: ./Package
         
-      - name: Pull request artifacts
-        uses: gavv/pull-request-artifacts@v1.0.0
+#      - name: Pull request artifacts
+#        uses: gavv/pull-request-artifacts@v1.0.0
+#        with:
+#          commit: ${{ github.event.pull_request.head.sha }}
+#          repo-token: ${{ secrets.GITHUB_TOKEN }}
+#          artifacts: |
+#            ./Package/garegex-2.0.0.tgz
+
+      - name: add artifact links to pull request and related issues step
+        uses: tonyhallett/artifacts-url-comments@v1.1.0
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          commit: ${{ github.event.pull_request.head.sha }}
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: |
-            ./Package/garegex-2.0.0.tgz
+            prefix: Here are the artifacts 
+            suffix: Have a nice day.
+            format: name
+            addTo: pullandissues
