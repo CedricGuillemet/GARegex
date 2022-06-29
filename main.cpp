@@ -1,8 +1,8 @@
 #include <stdio.h>
-#include "version.h"
+//#include "version.h"
 
 int main(int argc, char** argv)
 {
-    printf("using version %s\n", szVersion);
+    printf("Hello world\n");
     return 0;
 }

@@ -1,0 +1,21 @@
+name: PR Build
+on:
+  pull_request:
+    branches:
+      - master
+      
+jobs:
+  Buildit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build
+        run: gcc main.cpp -o main
+      - name: make folder
+        run: |
+             mkdir Package
+             cp ./main ./Package
+      - name: Upload Assembled
+        uses: actions/upload-artifact@v2
+        with:
+          name: 'Assembled'
+          path: Package
