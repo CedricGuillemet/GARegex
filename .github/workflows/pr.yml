@@ -23,10 +23,19 @@ jobs:
         with:
           name: 'Assembled'
           path: Package
+      - uses: actions/download-artifact@v3
+        with:
+          name: Assembled
+          path: ./
+          
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: ./
+        
       - name: Pull request artifacts
         uses: gavv/pull-request-artifacts@v1.0.0
         with:
           commit: ${{ github.event.pull_request.head.sha }}
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: |
-            Package
+            ./Package/main
