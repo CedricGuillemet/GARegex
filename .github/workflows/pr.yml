@@ -24,9 +24,9 @@ jobs:
           name: 'Assembled'
           path: Package
       - name: Pull request artifacts
-          uses: gavv/pull-request-artifacts@v1.0.0
-          with:
-            commit: ${{ github.event.pull_request.head.sha }}
-            repo-token: ${{ secrets.GITHUB_TOKEN }}
-            artifacts: |
-              Assembled
+        uses: gavv/pull-request-artifacts@v1.0.0
+        with:
+          commit: ${{ github.event.pull_request.head.sha }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: |
+            Assembled
