@@ -2,20 +2,48 @@ name: PR Build
 on:
   pull_request:
     branches:
-      - master
+      - main
       
 jobs:
   Buildit:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2.3.3
+        with:
+          submodules: 'recursive'
       - name: build
         run: gcc main.cpp -o main
       - name: make folder
         run: |
-             mkdir Package
              cp ./main ./Package
-      - name: Upload Assembled
-        uses: actions/upload-artifact@v2
+#      - name: Upload Assembled
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: 'Assembled'
+#          path: Package
+#      - uses: actions/download-artifact@v3
+#        with:
+#          name: Assembled
+#          path: ./
+          
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: ./
+        
+        
+      - name: Versionning
+        run: npm version --no-git-tag-version 2.0.0
+        working-directory: ./Package
+        
+      - name: Pack it
+        run: npm pack
+        working-directory: ./Package
+        
+      - name: Pull request artifacts
+        uses: gavv/pull-request-artifacts@v1.0.0
         with:
-          name: 'Assembled'
-          path: Package
+          commit: ${{ github.event.pull_request.head.sha }}
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: |
+            ./Package/garegex-2.0.0.tgz
