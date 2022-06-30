@@ -29,8 +29,8 @@ jobs:
 
       - name: set NPM auth
         run: |
-          echo @cedricguillemet:https://npm.pkg.github.com/ > build/.npmrc
-          echo '//npm.pkg.github.com/:_authToken=${NPM_TOKEN}' >> build/.npmrc
+          echo @cedricguillemet:https://npm.pkg.github.com/ > Package/.npmrc
+          echo '//npm.pkg.github.com/:_authToken=${NPM_TOKEN}' >> Package/.npmrc
           
       - name: Display structure of downloaded files
         run: ls -R
