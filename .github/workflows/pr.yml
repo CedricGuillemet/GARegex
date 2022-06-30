@@ -30,7 +30,7 @@ jobs:
       - name: set NPM auth ??
         run: |
           echo @cedricguillemet:https://npm.pkg.github.com/ > .npmrc
-          echo 'registry=http://npm.pkg.github.com' >> .npmrc
+          echo 'registry=http://npm.pkg.github.com/' >> .npmrc
           echo '//npm.pkg.github.com/:_authToken=${secrets.GITHUB_TOKEN}' >> .npmrc
         working-directory: ./Package
         
@@ -49,7 +49,7 @@ jobs:
       - run: npm publish
         working-directory: ./Package
         env:
-          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
 #      - name: Versionning
 #        run: npm version --no-git-tag-version 2.0.0
