@@ -1,7 +1,4 @@
 {
-	"publishConfig": {
-   "@cedricguillemet:registry": "https://npm.pkg.github.com"
- },
   "name": "@cedricguillemet/garegex",
   "version": "1.0.0",
   "description": "",
