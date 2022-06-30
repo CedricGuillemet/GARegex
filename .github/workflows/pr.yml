@@ -37,6 +37,9 @@ jobs:
         run: ls -R
         working-directory: ./
         
+      - name: login in
+        run: npm login --scope=@cedricguillemet --registry=https://npm.pkg.github.com
+        working-directory: ./Package
         
       - name: Versionning
         run: npm version --no-git-tag-version 2.0.0-${GITHUB_SHA::8}
