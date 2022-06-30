@@ -27,10 +27,7 @@ jobs:
 #          name: Assembled
 #          path: ./
 
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '10.x'
-          registry-url: 'https://npm.pkg.github.com'
+
         
       - name: set NPM auth ??
         run: |
@@ -52,6 +49,12 @@ jobs:
         run: npm version --no-git-tag-version 2.0.0-${GITHUB_SHA::8}
         working-directory: ./Package
         
+        
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '10.x'
+          registry-url: 'https://npm.pkg.github.com'
+          
       - run: npm publish
         working-directory: ./Package
         env:
