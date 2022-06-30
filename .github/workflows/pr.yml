@@ -37,6 +37,11 @@ jobs:
         run: ls -R
         working-directory: ./
         
+        
+      - name: Versionning
+        run: npm version --no-git-tag-version 2.0.0-${GITHUB_SHA::8}
+        working-directory: ./Package
+        
       - run: npm publish
         working-directory: ./Package
         env:
