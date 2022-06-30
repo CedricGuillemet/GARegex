@@ -27,6 +27,11 @@ jobs:
 #          name: Assembled
 #          path: ./
 
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '10.x'
+          registry-url: 'https://npm.pkg.github.com'
+        
       - name: set NPM auth ??
         run: |
           echo @cedricguillemet:https://npm.pkg.github.com/ > .npmrc
@@ -34,6 +39,7 @@ jobs:
           echo '//npm.pkg.github.com/:_authToken=${secrets.GITHUB_TOKEN}' >> .npmrc
         working-directory: ./Package
         
+
       - name: Display structure of downloaded files
         run: ls -R
         working-directory: ./
