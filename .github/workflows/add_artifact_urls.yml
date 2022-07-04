@@ -14,7 +14,7 @@ jobs:
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-            prefix: Here are the build results. Package also available on https://npm.pkg.github.com registry. Package version is 0.0.0-${{{GITHUB_SHA::8}}}
+            prefix: Here are the build results. Package also available on https://npm.pkg.github.com registry. Package version is 0.0.0-${env.GITHUB_SHA::8}
             suffix: Artifacts will only be retained for 90 days.
             format: name
             addTo: pull
