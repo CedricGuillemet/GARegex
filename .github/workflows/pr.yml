@@ -45,7 +45,7 @@ jobs:
         uses: thollander/actions-comment-pull-request@v1
         with:
           message: |
-            Package also available on https://npm.pkg.github.com registry. Package version is 0.0.0-${{ github.sha }::8}
+            Package also available on https://npm.pkg.github.com registry. Package version is 0.0.0-${{ github.sha }}::8
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
 #      - name: login in
