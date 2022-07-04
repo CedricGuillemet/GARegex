@@ -11,7 +11,8 @@ jobs:
     steps:
       - name: Add SHORT_SHA env property with commit short sha
         run: echo "SHORT_SHA=`echo ${GITHUB_SHA::8}`" >> $GITHUB_ENV
-        
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: add artifact links to pull request and related issues step
         uses: tonyhallett/artifacts-url-comments@main
         env:
