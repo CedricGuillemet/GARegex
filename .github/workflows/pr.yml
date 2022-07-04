@@ -45,20 +45,7 @@ jobs:
 #        run: npm login --scope=@cedricguillemet --registry=https://npm.pkg.github.com
 #        working-directory: ./Package
         
-      - name: Versionning
-        run: npm version --no-git-tag-version 0.0.0-${GITHUB_SHA::8}
-        working-directory: ./Package
-        
-        
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '12.x'
-          registry-url: 'https://npm.pkg.github.com'
-          
-      - run: npm publish
-        working-directory: ./Package
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
           
 #      - name: Versionning
 #        run: npm version --no-git-tag-version 2.0.0

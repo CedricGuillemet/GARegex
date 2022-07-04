@@ -14,8 +14,26 @@ jobs:
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-            prefix: Here are the build results
+            prefix: Here are the build results. Package also available on https://npm.pkg.github.com registry. Package version is 0.0.0-${GITHUB_SHA::8}
             suffix: Artifacts will only be retained for 90 days.
             format: name
             addTo: pull
         continue-on-error: true
+      - name: Download Assembled Folder
+        uses: actions/download-artifact@v2
+        with:
+          name: 'Assembled'
+          path: Package
+      - name: Versionning
+        run: npm version --no-git-tag-version 0.0.0-${GITHUB_SHA::8}
+        working-directory: ./Package
+        
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12.x'
+          registry-url: 'https://npm.pkg.github.com'
+          
+      - run: npm publish
+        working-directory: ./Package
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
