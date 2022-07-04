@@ -9,12 +9,15 @@ jobs:
     name: add artifact links to pull request and related issues job
     runs-on: windows-2019
     steps:
+      - name: Add SHORT_SHA env property with commit short sha
+        run: echo "SHORT_SHA=`echo ${GITHUB_SHA::8}`" >> $GITHUB_ENV
+        
       - name: add artifact links to pull request and related issues step
         uses: tonyhallett/artifacts-url-comments@main
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-            prefix: Here are the build results. Package also available on https://npm.pkg.github.com registry. Package version is 0.0.0-${github.sha::8}}
+            prefix: Here are the build results. Package also available on https://npm.pkg.github.com registry. Package version is 0.0.0-${{ env.SHORT_SHA }}
             suffix: Artifacts will only be retained for 90 days.
             format: name
             addTo: pull
@@ -37,3 +40,4 @@ jobs:
         working-directory: ./Package
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
