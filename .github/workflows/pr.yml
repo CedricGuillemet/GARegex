@@ -26,12 +26,27 @@ jobs:
 #        with:
 #          name: Assembled
 #          path: ./
-          
+
+
+        
+#      - name: set NPM auth ??
+#        run: |
+#          echo @cedricguillemet:https://npm.pkg.github.com/ > .npmrc
+#          echo 'registry=http://npm.pkg.github.com/' >> .npmrc
+#          echo '//npm.pkg.github.com/:_authToken=${secrets.GITHUB_TOKEN}' >> .npmrc
+#        working-directory: ./Package
+        
+
       - name: Display structure of downloaded files
         run: ls -R
         working-directory: ./
         
+#      - name: login in
+#        run: npm login --scope=@cedricguillemet --registry=https://npm.pkg.github.com
+#        working-directory: ./Package
         
+
+          
 #      - name: Versionning
 #        run: npm version --no-git-tag-version 2.0.0
 #        working-directory: ./Package
